@@ -18,7 +18,7 @@
         - [~~123Windows31/2kbot~~](https://github.com/123Windows31/2kbot)
         - [~~Emerald-AM9/Mica-App-Bot-~~](https://github.com/Emerald-AM9/Mica-App-Bot-)
             - [~~emerald-am9/mica-app-extension~~](https://gitee.com/emerald-am9/mica-app-extension/)
-        -[Abjust/2kbit-csnew](https://github.com/Abjust/2kbit-csnew)
+        - [Abjust/2kbit-csnew](https://github.com/Abjust/2kbit-csnew)
     - [~~Abjust/2kbit-java~~](https://github.com/Abjust/2kbit-java)
       - Abjust/2kbit-intp（本项目）
     - [~~Abjust/2kbit-py~~](https://github.com/Abjust/2kbit-py)
