@@ -26,7 +26,7 @@
 - [ObsidianCatalina](https://github.com/ObsidianCatalina/)
     - [~~ObsidianCatalina/ObsidianBot~~](https://github.com/ObsidianCatalina/ObsidianBot)
     - [ObsidianCatalina/OpenMariya](https://github.com/ObsidianCatalina/OpenMariya)
-        - [ltzXiaoYanMo/YanBot-OpenMariya_Edition](https://github.com/ltzXiaoYanMo/YanBot-OpenMariya_Edition)
+        - [~~ltzXiaoYanMo/YanBot-OpenMariya_Edition~~](https://github.com/ltzXiaoYanMo/YanBot-OpenMariya_Edition)
 - [daizihan233](https://github.com/daizihan233/)
     - [daizihan233/KuoHuBit](https://github.com/daizihan233/KuoHuBit)
         - [~~ltzXiaoYanMo/YanBot-KHB_Edition_Older~~](https://github.com/ltzXiaoYanMo/YanBot-KHB_Edition_Older)
