@@ -173,3 +173,9 @@ config.yaml
 
 # 日志
 log_file.log
+
+# 构建文件
+main.build
+main.dist
+nuitka-crash-report.xml
+

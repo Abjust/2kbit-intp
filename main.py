@@ -72,7 +72,7 @@ else:
             logger.error(f"请正确填写存储方法！仅接受{accepted_type}\n")
             input("按回车键关闭")
             exit(1)
-        constants.BotConstants.initialize(file)
+        constants.BotConstants.initialize(file.name)
 
 # 设置日志
 bot_logger.remove()
@@ -83,9 +83,9 @@ bot_logger.add("log_file.log", level=log_level)
 # 初始化机器人程序
 nonebot.init(host=host_addr[0], port=host_addr[1], driver="~fastapi",
              log_level=log_level,
-             superusers=constants.BotConstants.owner_qq,
-             command_start=constants.BotConstants.command_prefix,
-             command_sep=constants.BotConstants.command_separator)
+             superusers={constants.BotConstants.owner_qq},
+             command_start={constants.BotConstants.command_prefix},
+             command_sep={constants.BotConstants.command_separator})
 driver = nonebot.get_driver()
 driver.register_adapter(V11Adapter)
 require("nonebot_plugin_alconna")

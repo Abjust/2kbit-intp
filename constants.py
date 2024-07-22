@@ -20,8 +20,9 @@ class BotConstants:
 
     @classmethod
     def initialize(cls, config_file):
-        with open(config_file, 'r') as f:
-            config_data = ruamel.yaml.load(f)
+        with open(config_file, 'r', encoding='utf-8') as f:
+            yaml = ruamel.yaml.YAML()
+            config_data = yaml.load(f)
         for key, value in config_data.items():
             if key in ["owner_qq", "bot_qq", "db_port"]:
                 setattr(cls, key, int(value))

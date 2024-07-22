@@ -31,8 +31,6 @@ jobs:
         with:
           nuitka-version: main
           script-name: main.py
-          include-plugin-directory: codeintp
-          standalone: true
           onefile: true
 
       - id: string

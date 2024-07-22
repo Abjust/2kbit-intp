@@ -1,6 +1,6 @@
 [project]
 name = "codeintp"
-version = "1.0.0-beta1"
+version = "1.0.0-beta2"
 description = "2kbit Code: INTP"
 authors = [
     { name = "Abjust", email = "2533898108@qq.com" },
@@ -18,9 +18,11 @@ dependencies = [
     "nonebot-plugin-alconna>=0.37.1",
     "nonebot-adapter-onebot>=2.4.4",
     "nonebot-plugin-apscheduler>=0.5.0",
-    "cryptography>=42.0.8",
+    "cryptography>=42.0.8"
 ]
 requires-python = ">=3.10, <3.13"
 readme = "README.md"
 license = { text = "AGPL-3.0" }
 
+[tool.setuptools.packages.find]
+exclude = ["data*", ".github*"]
