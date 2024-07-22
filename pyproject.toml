@@ -1,6 +1,6 @@
 [project]
 name = "codeintp"
-version = "1.0.0-beta2"
+version = "1.0.0-beta3"
 description = "2kbit Code: INTP"
 authors = [
     { name = "Abjust", email = "2533898108@qq.com" },

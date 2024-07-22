@@ -36,7 +36,7 @@ if not os.path.exists("config.yaml"):
     # 数据库用户，仅mysql需要，其他可以留空
     db_user: ''
     # 数据库密码，仅mysql需要，其他可以留空
-    db_pswd: ''
+    db_password: ''
     # 数据库名称，仅mysql需要，其他可以留空
     db_name: ''
     """

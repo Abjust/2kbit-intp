@@ -45,9 +45,9 @@ async def handle_function(event: GroupMessageEvent):
         MessageSegment.reply(event.message_id),
         MessageSegment.at(event.sender.user_id),
         MessageSegment.text("\n"),
-        MessageSegment.text("机器人版本：2kbit Code: INTP 1.0.0-beta2\n"
+        MessageSegment.text("机器人版本：2kbit Code: INTP 1.0.0-beta3\n"
                             "上次更新日期：2024/7/23\n"
-                            "更新内容：修复了妨碍运行的bug\n"
+                            "更新内容：修复了妨碍数据工具mysql实现运作的bug\n"
                             "---------\n"
                             f"{splashes[r]}")
     ]))
