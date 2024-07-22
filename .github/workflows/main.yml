@@ -35,10 +35,23 @@ jobs:
           standalone: true
           onefile: true
 
+      - id: string
+        name: Lowercase String
+        uses: ASzc/change-string-case-action@v6
+        with:
+          string: ${{ runner.os }}
+
+      - id: commit
+        name: Get Commit Hash
+        uses: prompt/actions-commit-hash@v3
+        with:
+          push: true
+          tags: ${{ steps.commit.outputs.short }}
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: 2kbit-intp-${{ runner.os }}
+          name: 2kbit-intp-${{ steps.commit.outputs.short }}-${{ steps.string.outputs.lowercase }}
           path: |
             build/*.exe
             build/*
