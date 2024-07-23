@@ -31,7 +31,6 @@ jobs:
         with:
           nuitka-version: main
           script-name: main.py
-          include-module: nonebot-drivers-fastapi
           include-plugin-directory: codeintp
           standalone: true
           onefile: true
