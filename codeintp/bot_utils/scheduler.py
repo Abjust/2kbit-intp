@@ -63,7 +63,7 @@ def update_schedules(action: str, task_info=None):
     if task_info is None:
         task_info = {}
     schedules = datautil.lookup("schedules")
-    if action == "initialize":
+    if action == "initialize" and not schedule_ids:
         for schedule in schedules:
             schedule_ids.append(schedule['taskid'])
             if schedule['enabled']:

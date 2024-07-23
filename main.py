@@ -88,7 +88,6 @@ nonebot.init(host=host_addr[0], port=host_addr[1], driver="~fastapi",
              command_sep={constants.BotConstants.command_separator})
 driver = nonebot.get_driver()
 driver.register_adapter(V11Adapter)
-require("nonebot_plugin_alconna")
 require("nonebot_plugin_apscheduler")
 
 # 加载插件

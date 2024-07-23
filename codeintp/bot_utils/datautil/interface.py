@@ -14,12 +14,16 @@ class DataUtilInterface(ABC):
         pass
 
     @abstractmethod
-    def lookup(self, table_name: str, identifier: str = ""):
+    def lookup(self, table_name: str, identifier: str = "", is_here: bool = False):
         pass
 
     def is_here(self, table_name: str, identifier: str = "") -> bool:
-        result = self.lookup(table_name, identifier)
-        return len(result) > 0 if result is not None else False
+        try:
+            result = self.lookup(table_name, identifier, is_here=True)
+            return len(result) > 0
+        except Exception as e:
+            bot_logger.success(f"Table {table_name} does not exist: {e}")
+            return False
 
     @abstractmethod
     def modify(self, table_name: str, identifier: str, items: Dict[str, Any]):
@@ -36,7 +40,7 @@ class SQLDataUtilInterface(DataUtilInterface):
             else:
                 cleaned_data[key] = value
         keys = ', '.join(cleaned_data.keys())
-        placeholders = ', '.join('?' for _ in cleaned_data.values())
+        placeholders = ', '.join('%s' for _ in cleaned_data.values())
         sql = f"INSERT INTO {table_name} ({keys}) VALUES ({placeholders})"
         try:
             self._execute_query(sql, tuple(cleaned_data.values()))
@@ -45,7 +49,7 @@ class SQLDataUtilInterface(DataUtilInterface):
 
     def delete(self, table_name: str, identifier: str):
         identifier_key, identifier_value = identifier.split("_", 1)
-        sql = f"DELETE FROM {table_name} WHERE {identifier_key} = ?"
+        sql = f"DELETE FROM {table_name} WHERE {identifier_key} = %s"
         try:
             self._execute_query(sql, (identifier_value,))
         except Exception as e:
@@ -55,27 +59,28 @@ class SQLDataUtilInterface(DataUtilInterface):
     def _get_results(columns: List[str], original_results: Union[tuple[tuple[Any, ...], ...], list]):
         return [{column: result[columns.index(column)] for column in columns} for result in original_results]
 
-    def lookup(self, table_name: str, identifier: str = ""):
+    def lookup(self, table_name: str, identifier: str = "", is_here: bool = False):
         if identifier:
             identifier_key, identifier_value = identifier.split("_", 1)
-            sql = f'SELECT * FROM {table_name} WHERE {identifier_key} = ?'
+            sql = f'SELECT * FROM {table_name} WHERE {identifier_key} = %s'
             params = (identifier_value,)
         else:
             sql = f'SELECT * FROM {table_name}'
             params = ()
-        cursor = self._execute_query(sql, params)
-        results = cursor.fetchall()
-        columns = [col[0] for col in cursor.description]
         try:
+            cursor = self._execute_query(sql, params)
+            results = cursor.fetchall()
+            columns = [col[0] for col in cursor.description]
             return self._get_results(columns, results)
         except Exception as e:
-            bot_logger.error(f"Error looking up data from {table_name}: {e}")
-            return None
+            if not is_here:
+                bot_logger.error(f"Error looking up data from {table_name}: {e}")
+            raise
 
     def modify(self, table_name: str, identifier: str, items: Dict[str, Any]):
         identifier_key, identifier_value = identifier.split("_", 1)
-        keys_values = ', '.join(f"{key} = ?" for key in items.keys())
-        sql = f"UPDATE {table_name} SET {keys_values} WHERE {identifier_key} = ?"
+        keys_values = ', '.join(f"{key} = %s" for key in items.keys())
+        sql = f"UPDATE {table_name} SET {keys_values} WHERE {identifier_key} = %s"
         params = tuple(items.values()) + (identifier_value,)
         try:
             self._execute_query(sql, params)
@@ -110,5 +115,5 @@ class FileDataUtilInterface(DataUtilInterface):
         pass
 
     @abstractmethod
-    def lookup(self, table_name: str, identifier: str = "", search: bool = False):
+    def lookup(self, table_name: str, identifier: str = "", search: bool = False, is_here: bool = False):
         pass

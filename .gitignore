@@ -176,6 +176,8 @@ log_file.log
 
 # 构建文件
 main.build
+main.onefile-build
 main.dist
+main.exe
 nuitka-crash-report.xml
 

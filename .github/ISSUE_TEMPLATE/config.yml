@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 世界第五大洋（？）
+    url: https://github.com/Abjust/2kbit-intp/discussions/
+    about: 可以来这里水贴（？），或者提问一些问题，当然这些问题可以没有任何意义，比如说闲聊
+  - name: 2kbit 文档
+    url: https://2kbit.o0o.icu
+    about: 此处将提供使用帮助、构建教程、代码分析和一系列可能有用的信息！

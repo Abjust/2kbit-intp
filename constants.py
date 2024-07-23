@@ -5,18 +5,18 @@ import ruamel
 
 # 全局常量，请勿删除此文件
 class BotConstants:
-    log_level: str = None
-    bot_qq: int = None
-    owner_qq: int = None
-    command_prefix: str = None
-    command_separator: str = None
-    db_type: str = None
-    db_host: str = None
-    db_port: str = None
-    db_user: str = None
-    db_password: str = None
-    db_name: str = None
-    boot_time: int = None
+    log_level: str = ""
+    bot_qq: int = 0
+    owner_qq: int = 0
+    command_prefix: str = ""
+    command_separator: str = ""
+    db_type: str = ""
+    db_host: str = ""
+    db_port: str = ""
+    db_user: str = ""
+    db_password: str = ""
+    db_name: str = ""
+    boot_time: int = 0
 
     @classmethod
     def initialize(cls, config_file):

@@ -24,7 +24,6 @@ class MySQLDataUtil(SQLDataUtilInterface):
             )
         except Exception as e:
             bot_logger.error(f"Error connecting: {e}")
-            raise
 
     def _execute_query(self, query: str, params: tuple = ()) -> Cursor:
         try:
@@ -35,7 +34,6 @@ class MySQLDataUtil(SQLDataUtilInterface):
                 return mycursor
         except pymysql.MySQLError as e:
             bot_logger.error(f"Error executing query: {e}")
-            raise
 
     def initialize(self, table_name, table_columns: List[Tuple[str, str, bool]]):
         sql = dedent(f"""
